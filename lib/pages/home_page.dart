@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:student_attendance/widget/Blue_text.dart';
+import 'package:student_attendance/widget/Text_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,6 +19,9 @@ class HomePage extends StatelessWidget {
       body: Container(
         margin: EdgeInsets.only(
           top: 40,
+          right: 20,
+          left: 20,
+          bottom: 20,
         ),
         child: Column(
           children: [
@@ -39,6 +44,50 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Material(
+              borderRadius: BorderRadius.circular(10),
+              elevation: 3.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.only(
+                  left: 20,
+                  top: 10,
+                  bottom: 10,
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        TextWidget(
+                          text: 'Student Name : ',
+                        ),
+                        BlueText(
+                          text: 'Amaan Memon',
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        TextWidget(
+                          text: 'Roll No : ',
+                        ),
+                        BlueText(
+                          text: '01',
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             )
           ],
         ),
