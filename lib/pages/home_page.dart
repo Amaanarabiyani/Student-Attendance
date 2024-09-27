@@ -67,7 +67,18 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 BlueText(
                                   text: ds['Name'],
-                                )
+                                ),
+                                Spacer(),
+                                GestureDetector(
+                                  onTap: () async {
+                                    await DatabaseMethods()
+                                        .deleteStudent(ds.id);
+                                  },
+                                  child: Icon(
+                                    Icons.delete,
+                                    color: Colors.red,
+                                  ),
+                                ),
                               ],
                             ),
                             SizedBox(
@@ -104,45 +115,101 @@ class _HomePageState extends State<HomePage> {
                                 TextWidget(
                                   text: 'Attendance :  ',
                                 ),
-                                Container(
-                                  width: 50,
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.green,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "P",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
+                                ds['Presnt'] == false
+                                    ? GestureDetector(
+                                        onTap: () async {
+                                          await DatabaseMethods()
+                                              .updateAttendance(
+                                                  'Presnt', ds.id);
+                                        },
+                                        child: Container(
+                                          width: 50,
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "P",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : Container(
+                                        width: 50,
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.green,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "P",
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ),
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Container(
-                                  width: 50,
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.red,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'A',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                )
+                                ds['Absent'] == false
+                                    ? GestureDetector(
+                                        onTap: () async {
+                                          await DatabaseMethods()
+                                              .updateAttendance(
+                                                  'Absent', ds.id);
+                                        },
+                                        child: Container(
+                                          width: 50,
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "A",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : Container(
+                                        width: 50,
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.red,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'A',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      )
                               ],
                             )
                           ],

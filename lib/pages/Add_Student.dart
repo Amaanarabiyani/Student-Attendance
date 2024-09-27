@@ -107,7 +107,7 @@ class _AddStudentState extends State<AddStudent> {
                 color: Color(0xffececf8),
               ),
               child: TextField(
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.number,
                 controller: rollnumController,
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -137,6 +137,7 @@ class _AddStudentState extends State<AddStudent> {
                 color: Color(0xffececf8),
               ),
               child: TextField(
+                keyboardType: TextInputType.number,
                 controller: ageController,
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -162,17 +163,20 @@ class _AddStudentState extends State<AddStudent> {
                   };
                   await DatabaseMethods()
                       .AddStudent(StudentInfomap, addId)
-                      .then((value) {
-                    nameController.clear();
-                    ageController.clear();
-                    rollnumController.clear();
-                    Get.back();
-                    Get.snackbar(
-                      "Success",
-                      "Student Added Sucessfully,",
-                      snackPosition: SnackPosition.TOP,
-                    );
-                  });
+                      .then(
+                    (value) {
+                      nameController.clear();
+                      ageController.clear();
+                      rollnumController.clear();
+                      Get.back();
+                      Get.snackbar(
+                        backgroundColor: Colors.green,
+                        "Success",
+                        "Student Added Sucessfully,",
+                        snackPosition: SnackPosition.TOP,
+                      );
+                    },
+                  );
                 }
               },
               child: Center(

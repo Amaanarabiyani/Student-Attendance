@@ -11,4 +11,18 @@ class DatabaseMethods {
   Future<Stream<QuerySnapshot>> getStudents() async {
     return await FirebaseFirestore.instance.collection('Students').snapshots();
   }
+
+  updateAttendance(String attendancecase, String id) async {
+    return await FirebaseFirestore.instance
+        .collection('Students')
+        .doc(id)
+        .update({attendancecase: true});
+  }
+
+  deleteStudent(String id) async {
+    return await FirebaseFirestore.instance
+        .collection('Students')
+        .doc(id)
+        .delete();
+  }
 }
